@@ -1,0 +1,4 @@
+[submodule "xmarts/ace_group"]
+	path = xmarts/ace_group
+	url = git@github.com:xmarts/ace_group.git
+	branch = 26nov
