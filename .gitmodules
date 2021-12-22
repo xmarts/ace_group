@@ -2,3 +2,8 @@
 	path = xmarts/ace_group
 	url = git@github.com:xmarts/ace_group.git
 	branch = 26nov
+
+[submodule "xmarts/ga-package-import"]
+	path = xmarts/ga-package-import
+	url = git@github.com:xmarts/ga-package-import.git
+	branch = main
