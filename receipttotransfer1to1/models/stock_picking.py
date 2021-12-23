@@ -44,4 +44,6 @@ class Picking(models.Model):
 
     def _autoconfirm_picking(self):        
         return super(Picking, self.with_context(siempre_origen=self.name))._autoconfirm_picking()
-   
+
+    def action_confirm(self):
+        return super(Picking, self.with_context(siempre_origen=self.name)).action_confirm()
