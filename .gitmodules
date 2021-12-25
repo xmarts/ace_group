@@ -2,3 +2,13 @@
 	path = xmarts/ace_group
 	url = git@github.com:xmarts/ace_group.git
 	branch = 26nov
+
+[submodule "xmarts/ga-package-import"]
+	path = xmarts/ga-package-import
+	url = git@github.com:xmarts/ga-package-import.git
+	branch = main
+
+[submodule "xmarts/product_label_for_ZP"]
+	path = xmarts/product_label_for_ZP
+	url = git@github.com:xmarts/product_label_for_ZP.git
+	branch = 14.0
