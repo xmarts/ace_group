@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="wiz_stock_move_view" model="ir.ui.view">
+        <field name="name">Select Package</field>
+        <field name="model">wiz.stock.move</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Select Package">
+                <group>
+                    <field name="journal_ids" options="{'no_create': True}"/>
+                </group>
+                <footer>
+                    <button string="Ok" name="approve_activity" type="object" class="text-success" icon="fa-check-circle"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>             
+            </form>
+        </field>
+    </record>
+
+</odoo>
