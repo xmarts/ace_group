@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--
+        <report
+            string="ACE Package Barcode (ZPL)"
+            id="action_report_quant_package_barcode_ace"
+            model="stock.quant.package"
+            report_type="qweb-pdf"
+            name="ga_stock_prearrival.report_package_barcode_ace_zpl"
+            file="ga_stock_prearrival.report_package_barcode_ace_zpl"/>            
+        -->
+        
+        <report
+            string="ACE Picking Barcode (ZPL)"
+            id="action_report_quant_picking_barcode_ace_zpl"
+            model="stock.picking"
+            report_type="qweb-text"
+            name="label_ace_group.report_picking_barcode_ace_zpl"
+            file="label_ace_group.report_picking_barcode_ace_zpl"/>
+
+    </data>
+</odoo>

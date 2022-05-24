@@ -1,0 +1,45 @@
+<odoo>
+  <data>
+
+        <record id="stock_quant_package_form_extra" model="ir.ui.view">
+            <field name="name">stock.quant.package.form</field>
+            <field name="model">stock.quant.package</field>
+            <field name="inherit_id" ref="stock.view_quant_package_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header/button[@name='unpack']" position="after">
+                	<button name="%(ga_stock_prearrival.action_wiz_button_move_package)d" string="transfer" type="action" class="oe_highlight" groups="stock.group_stock_user"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="stock_quant_package_tree_extra" model="ir.ui.view">
+            <field name="name">stock.quant.package.tree.extra</field>
+            <field name="model">stock.quant.package</field>
+            <field name="inherit_id" ref="stock.view_quant_package_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='location_id']" position="after">
+                	<field name="current_picking_id"/>
+                	<field name="current_reference" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="stock_quant_package_search_extra" model="ir.ui.view">
+            <field name="name">stock.quant.package.search.extra</field>
+            <field name="model">stock.quant.package</field>
+            <field name="inherit_id" ref="stock.quant_package_search_view"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='name']" position="replace">
+            		<field name="name" string="Package" filter_domain="['|',('name','ilike',self),('current_reference','ilike',self)]"/>
+            	</xpath>
+                <xpath expr="//field[@name='packaging_id']" position="after">
+                	<field name="current_picking_id"/>
+                </xpath>
+                <xpath expr="//group/filter[@name='packaging']" position="after">
+                	<filter string="Transfer" name="transfer" domain="[]" context="{'group_by' : 'current_picking_id'}"/>
+                </xpath>                               
+            </field>
+        </record>                        
+
+  </data>
+</odoo>

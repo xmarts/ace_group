@@ -1,0 +1,41 @@
+<odoo>
+  <data>
+
+        <record id="view_picking_ga_custom_form" model="ir.ui.view">
+            <field name="name">stock.picking.ga.custom.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/group/group[2]/field[@name='origin']" position="after">
+                    <field name="ga_po_number"/>
+                </xpath>
+                <xpath expr="//sheet/notebook/page[last()]" position="after">
+                    <page string="Carrier Informations" name='ga_custom_carrier'>
+                        <group>
+                            <group>
+                                <field name="ga_inventory_type"/>
+                                <field name="ga_weight"/>
+                                <field name="ga_seal_number"/>
+                                <field name="ga_truck_number"/>
+                            </group>                
+                            <group>
+                                <field name="ga_container_number"/>
+                                <field name="ga_weight"/>
+                                <field name="ga_truck_license"/>
+                                <field name="ga_trailer_license"/>
+                            </group>                
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//sheet/group/group[2]/field[@name='owner_id']" position="replace"/>
+                <xpath expr="//sheet/group/group[1]/field[@name='partner_id']" position="after">
+                    <field name="owner_id" string="Customer" groups="stock.group_tracking_owner" attrs="{'invisible': [('picking_type_code', '!=', 'incoming')]}"/>
+                </xpath>
+                <xpath expr="//sheet/group/group[1]/div/label[2]" position="attributes">
+                    <attribute name="string">Shipper</attribute>
+                </xpath>
+            </field>
+        </record>
+        
+  </data>
+</odoo>
