@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_wiz_import_package_user,ga_package_import.stock_prearrival_whse_manager,model_wiz_import_package,stock.group_stock_user,1,1,1,0
-access_wiz_import_package_manager,ga_package_import.stock_prearrival_whse_manager,model_wiz_import_package,stock.group_stock_user,1,1,1,1
