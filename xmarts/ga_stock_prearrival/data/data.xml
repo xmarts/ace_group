@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        
+    <!-- Cambiar a modo lista (tree) por defecto -->
+    <record model="ir.actions.act_window" id="stock.action_package_view">
+        <field name="view_mode">tree,kanban,form</field>
+    </record>       
+    
+    <data noupdate="1">    
+
+        <record id="whse_001" model="stock.prearrival.whse">
+            <field name="name">WHSE 001</field>
+        </record>
+
+        <record id="whse_002" model="stock.prearrival.whse">
+            <field name="name">WHSE 002</field>
+        </record>    
+
+        <record id="whse_003" model="stock.prearrival.whse">
+            <field name="name">WHSE 003</field>
+        </record>    
+
+        <record id="whse_004" model="stock.prearrival.whse">
+            <field name="name">WHSE 004</field>
+        </record>                    
+
+	</data>    
+
+</odoo>
