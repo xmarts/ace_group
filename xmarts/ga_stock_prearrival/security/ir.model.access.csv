@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_prearrival_stock_prearriva_whse_manager,ga_stock_prearrival.stock_prearrival_whse_manager,model_stock_prearrival_whse,stock.group_stock_manager,1,1,1,1
-access_prearrival_stock_prearriva_whse_user,ga_stock_prearrival.stock_prearrival_whse_user,model_stock_prearrival_whse,base.group_user,1,0,0,0
