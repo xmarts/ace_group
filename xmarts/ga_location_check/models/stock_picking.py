@@ -26,6 +26,6 @@ class StockPicking(models.Model):
                 for x in rec.package_level_ids_details:
                     _logger.info("X: %s"%x)
                     if not x.is_done:
-                        raise ValidationError("Error. Este almacen esta restringido a no procesar packages done")
+                        raise ValidationError("Please process all the LPN's in your Order")
                         return False        
         return super(StockPicking, self).button_validate()
