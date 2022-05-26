@@ -15,29 +15,17 @@ class StockPicking(models.Model):
     def button_validate(self):
         for rec in self:
             location = False
-            if rec.picking_type_id=='internal' and rec.location_dest_id.ga_is_check_package_done:
+            if rec.picking_type_id.code=='internal' and rec.location_dest_id.ga_is_check_package_done:
                 location = rec.location_dest_id
-            if rec.picking_type_id=='incoming' and rec.location_dest_id.ga_is_check_package_done:
+            if rec.picking_type_id.code=='incoming' and rec.location_dest_id.ga_is_check_package_done:
                 location = rec.location_dest_id
-            if rec.picking_type_id=='outgoing' and rec.location_id.ga_is_check_package_done:
+            if rec.picking_type_id.code=='outgoing' and rec.location_id.ga_is_check_package_done:
                 location = rec.location_id
-            if location and rec.packages_level_ids_details:
-                if any(x.is_done for x in rec.packages_level_ids_details):
-                    raise ValidationError("Error. Este almacen esta restringido a no procesar packages done")
-                    return False        
+            _logger.info("location: %s"%location)
+            if location and rec.package_level_ids_details:
+                for x in rec.package_level_ids_details:
+                    _logger.info("X: %s"%x)
+                    if not x.is_done:
+                        raise ValidationError("Error. Este almacen esta restringido a no procesar packages done")
+                        return False        
         return super(StockPicking, self).button_validate()
-
-    @api.constrains("state")
-    def check_package_done(self):
-        for rec in self:
-            location = False
-            if rec.picking_type_id=='internal' and rec.location_dest_id.ga_is_check_package_done:
-                location = rec.location_dest_id
-            if rec.picking_type_id=='incoming' and rec.location_dest_id.ga_is_check_package_done:
-                location = rec.location_dest_id
-            if rec.picking_type_id=='outgoing' and rec.location_id.ga_is_check_package_done:
-                location = rec.location_id
-            if location and rec.packages_level_ids_details:
-                if any(x.is_done for x in rec.packages_level_ids_details):
-                    raise ValidationError("Error. Este almacen esta restringido a no procesar packages done")
-                    return False
