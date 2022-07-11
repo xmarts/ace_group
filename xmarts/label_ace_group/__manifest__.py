@@ -19,15 +19,17 @@
     'version': '0.0.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['stock'],
+    'depends': ['stock','ga_stock_prearrival'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
         #'data/data.xml',
         #'views/views.xml',
+        'views/stock_quant_package_view.xml',
         'report/stock_report_views.xml',
         'report/report_package_barcode_ace.xml',
+        'report/report_package_zpl.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode

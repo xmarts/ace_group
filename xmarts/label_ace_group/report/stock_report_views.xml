@@ -18,7 +18,7 @@
             model="stock.picking"
             report_type="qweb-text"
             name="label_ace_group.report_picking_barcode_ace_zpl"
-            file="label_ace_group.report_picking_barcode_ace_zpl"/>
+            file="label_ace_group.report_picking_barcode_ace_zpl"/>               
 
     </data>
 </odoo>
