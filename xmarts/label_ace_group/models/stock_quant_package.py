@@ -25,3 +25,9 @@ class StockQuantPackage(models.Model):
         domain = [('picking_id', operator, value)]
         data = self.env['stock.package_level'].sudo().search(domain)
         return [('id', 'in', data.mapped('package_id.id'))]        
+
+class StockPackageLevel(models.Model):
+    _inherit = 'stock.package_level'
+    _order = 'location_dest_name, id'
+
+    location_dest_name = fields.Char('Location Dest. Name', related="location_dest_id.name", store=True)
