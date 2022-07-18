@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<template id="report_package_barcode_ace_zpl">
+            <t t-set="pos_eti" t-value="0"/>
+            <t t-set="len_pack" t-value="len(docs)"/>
+            <t t-foreach="docs" t-as="pack">
+                <t t-translation="off">
+                <t t-set="picking" t-value="env['stock.picking'].search([('id', 'in', pack.picking_ids.ids),('picking_type_id.code','=','incoming')], limit=1)"/>
+                <t t-set="picking" t-value="picking if picking else pack.current_picking_id"/>
+                <t t-set="prod" t-value="pack.quant_ids and pack.quant_ids[0] or False"/>
+                <t t-set="prod_name" t-value="prod.product_id.name if prod else ''"/>
+                <t t-set="prod_uom" t-value="prod.product_uom_id.name if prod else ''"/>                  
+                <t t-set="pos_eti" t-value="pos_eti+1"/>                  
+^XA
+^MD40
+^FO20,30^GFA,1300,1300,13,gKF,:::::::::::::::::::::IFC79CC078F39E3C060307FF,IFC79CFBF2731E3FBE7F33FF,IFC79CF9E7311E3F3E7F39FF,IF939CF9E7311C9F1E7F39FF,IF939CF1E7345C9F9E7F39FF,IF939CF1E7345C9F9E0339FF,IF399CF9E736DCDF3E7F39FF,IF019CF9E737D80F3E7F39FF,IF399CF1E737D9CF1E7F39FF,IF399CF9F277D9CF1E7F33FF,FFE7CC1F9F8F7D3E71E0307FF,gKF,:::IFE39CF1E03C79COF,IF9F9CEFFDF9B88OF,IF9F9CCFFCF3988OF,IF3F9CC7F9F3988OF,IF3F9CC1FCF39A2OF,IF3F9CE0FCF39A2OF,IF3F9CF87DF39B6OF,IF3F9CFE7DF39BEOF,IF9F9CFE79F39BEOF,IF9D9CDE79F93BEOF,IFE3C1E1F8FC7BEOF,gKF,::IF019CC0E030780F1MF,IF3F9CCE67F31F7ENF,IF3FC9CE67F39E3CNF,IF3FC1CE67F39F3C7MF,IF3FE3CE67F39F3C1MF,IF01E3CE60I3E3E0MF,IF3FE3C0E7F07F3F87LF,IF3FC1CFE7F33E7FE7LF,IF3FC9CFE7F39F3FE7LF,IF3F9CCFE7F39F7DE7LF,IF019CCFE0338F7E1MF,gKF,::::::IFC383F1E7303QF,IF9D98E6E7339QF,IF3F9CCE67339QF,::IF3F99CE67339QF,IF3181CE67303QF,IF3D99CE6733RF,IF3998CE6733RF,IFI9CE4E733RF,IFC19C71F073RF,gKF,:::::::::::::::::::^FS
+
+^MMT
+^PW812
+^LL0447
+^LS0
+^CF0,25
+^FO130,15^FD<t t-esc="pack.company_id.name"/>^FS
+^CF0,50
+^FO130,50^FD<t t-esc="picking.name if picking else ''"/>^FS
+^FO130,90^FD<t t-esc="pack.name"/>^FS
+^CF0,25
+^FO700,70^FD<t t-esc="'%s of %s'%(pos_eti,len_pack)"/>^FS
+^FO500,135^FD<t t-esc="'Receiving Date: %s'%(picking.date_done.strftime('%m/%d/%Y')) if picking else ''"/>^FS
+^CF0,25
+^FO10,150^FDShipper: <t t-esc="picking.partner_id.name if picking else ''"/>^FS
+^FO500,160^FDPo: <t t-esc="picking.ga_po_number if picking else ''"/>^FS
+^FO10,180^FDConsigne: <t t-esc="picking.owner_id.name if picking else ''"/>^FS
+^FO500,185^FDBol: <t t-esc="picking.bol if picking else ''"/>^FS
+^FO10,210^FDWhs: <t t-esc="picking.whse.name if picking else ''"/>^FS
+^FO500,215^FDUOM: <t t-esc="prod_uom"/>^FS
+^FO500,245^FDProd: <t t-esc="prod_name"/>^FS
+^CF0,25
+^BY2,3,60^FT40,300^BCN,,Y,N
+^FD<t t-esc="pack.name"/>^FS
+^BY2,3,60^FT40,390^BCN,,Y,N
+^FD<t t-esc="picking.name if picking else ''"/>^FS
+^PQ1,0,1,Y
+^XZ 
+                </t>
+            </t>
+		</template>   
+ 
+
+        <report
+            string="ACE Package Barcode (ZPL)"
+            id="action_report_quant_package_barcode_ace_zpl"
+            model="stock.quant.package"
+            report_type="qweb-text"
+            name="label_ace_group.report_package_barcode_ace_zpl"
+            file="label_ace_group.report_package_barcode_ace_zpl"/>  
+
+	</data>
+</odoo>
