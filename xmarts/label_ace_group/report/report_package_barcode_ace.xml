@@ -31,7 +31,7 @@
 ^FO700,70^FD<t t-esc="'%s of %s'%(pos_eti,len_pack)"/>^FS
 ^FO500,135^FD<t t-esc="'Receiving Date: %s'%(picking.date_done.strftime('%m/%d/%Y'))"/>^FS
 ^CF0,25
-^FO10,150^FDShipper: <t t-esc="picking.partner_id.name"/>^FS
+^FO10,150^FDShipper: <t t-esc="picking.partner_id.name[0:27] if picking.partner_id and picking.partner_id.name else ''"/>^FS
 ^FO500,160^FDPo: <t t-esc="picking.ga_po_number"/>^FS
 ^FO10,180^FDConsigne: <t t-esc="picking.owner_id.name"/>^FS
 ^FO500,185^FDBol: <t t-esc="picking.bol"/>^FS
@@ -48,7 +48,7 @@
                   </t>
                 </t>
                 <t t-else="">
-                  <t t-set="prod" t-value="picking.move_line and pack.move_line[0] or False"/>
+                  <t t-set="prod" t-value="picking.move_lines and picking.move_lines[0] or False"/>
                   <t t-set="prod_name" t-value="prod.product_id.name if prod else ''"/>
                   <t t-set="prod_uom" t-value="prod.product_uom.name if prod else ''"/>                   
                   <t t-set="pos_eti" t-value="1"/>
@@ -69,7 +69,7 @@
 ^FO500,70^FD<t t-esc="'%s of %s'%(pos_eti,len_pack)"/>^FS
 ^FO500,135^FD<t t-esc="'Receiving Date: %s'%(picking.date_done.strftime('%m/%d/%Y'))"/>^FS
 ^CF0,25
-^FO10,150^FDShipper: <t t-esc="picking.partner_id.name"/>^FS
+^FO10,150^FDShipper: <t t-esc="picking.partner_id.name[0:27] if picking.partner_id and picking.partner_id.name else ''"/>^FS
 ^FO500,160^FDPo: <t t-esc="picking.ga_po_number"/>^FS
 ^FO10,180^FDConsigne: <t t-esc="picking.owner_id.name"/>^FS
 ^FO500,185^FDBol: <t t-esc="picking.bol"/>^FS
